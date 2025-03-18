@@ -1,16 +1,14 @@
 
-
-function allowDrop(event) {
-    event.preventDefault();
-}
-
 function drag(event) {
-    event.dataTransfer.setData("text", event.target.innerHTML);
-    // event.dataTransfer.setData("taskId", event.target.id);
+    // event.dataTransfer.setData("text", event.target.innerHTML);
+    event.dataTransfer.setData("taskId", event.target.id);
     event.target.classList.add('dragging');
 
 }
 
+function allowDrop(event) {
+    event.preventDefault();
+}
 
 
 function drop(event) {
@@ -29,19 +27,13 @@ function drop(event) {
 }
 
 function appendTask(event,column) {
-    const data = event.dataTransfer.getData("text");
-    // const taskId = event.dataTransfer.getData("taskId");
-    
-    // Create a new task element
-    const newTask = document.createElement("div");
-    newTask.className = "task";
-    newTask.draggable = true;
-    newTask.innerHTML = data;
-    // newTask.id = taskId; // You can assign a unique ID if needed
-    newTask.ondragstart = drag;
+    const taskId = event.dataTransfer.getData("taskId");
+    const taskToMove = document.getElementById(taskId);
 
-    // Append the new task to the column
-    column.appendChild(newTask);
+    // Move the task to the new column
+    if (taskToMove) {
+        column.appendChild(taskToMove);
+    }
 }
 
 // Remove the dragging class when the drag ends
