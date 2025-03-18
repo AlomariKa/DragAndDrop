@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+    padding: 10px;
+    min-height: 200px;
+}
+
+.column h2 {
+    text-align: center;
+}
+
+.task {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: move;
+    width: 50%;
+    text-align: center;
+    margin: 10px auto;
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Added transition */
+
+}
+.task.dragging {
+    opacity: 0.5; /* Make the task semi-transparent while dragging */
+    transform: scale(1.05); /* Slightly scale up the task */
+}
